@@ -11,8 +11,11 @@ import Task7 from './exam-tasks/task-7/Task7';
 import Task8 from './exam-tasks/task-8/Task8';
 import Task9 from './exam-tasks/task-9/Task9';
 import Task10 from './exam-tasks/task-10/Task10';
+import AboutUs from "./exam-tasks/task-1/Pages/About Us";
+import Contacts from "./exam-tasks/task-1/Pages/Contacts";
 
 function App() {
+
   return (
     <div className='App'>
       <Task1 />
