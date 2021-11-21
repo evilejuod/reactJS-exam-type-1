@@ -1,14 +1,33 @@
-import React from 'react';
+import React, {useState, createContext} from 'react';
 import CompA from './CompA';
 import CompB from './CompB';
+import styled from "styled-components";
+
+const Main = styled.main`
+    display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+export const contextCounter = createContext();
+
 
 function Task8() {
+
+    const [  counter, setCounter ] = useState(0)
+
   return (
-    <div>
+    <contextCounter.Provider value={{ counter, setCounter }}>
       <h3>Task 8</h3>
-      <CompA />
-      <CompB />
-    </div>
+        <Main>
+            <h4>{counter}</h4>
+
+            <CompA />
+            <CompB />
+
+        </Main>
+
+    </contextCounter.Provider>
   );
 }
 

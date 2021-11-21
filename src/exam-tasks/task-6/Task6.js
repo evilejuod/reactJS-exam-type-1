@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const dataa = 'https://jsonplaceholder.typicode.com/users';
+// const dataa = 'https://jsonplaceholder.typicode.com/users';
 
 function Task6() {
 

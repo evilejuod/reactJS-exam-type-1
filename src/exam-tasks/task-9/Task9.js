@@ -1,12 +1,23 @@
 import React, { Component } from 'react';
 import Card from './Card';
+import styled from "styled-components";
+
 
 export default class Task9 extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+
+    };
+  }
+
   render() {
     return (
+
       <div>
         <h3>Task 9</h3>
-        {/*<Card />*/}
+
+        <Card />
       </div>
     );
   }

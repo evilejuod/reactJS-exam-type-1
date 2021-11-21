@@ -2,6 +2,7 @@ import React, {useEffect, useReducer} from 'react';
 import 'font-awesome/css/font-awesome.min.css';
 import styled from "styled-components";
 
+
 const Icons = styled.div`
 display: flex;
   flex-direction: row;
@@ -9,7 +10,7 @@ display: flex;
   align-items: center;
   margin-bottom: 60px;
   color: #7f7f7f;
-`;
+ `;
 const Icon =styled.i`
   margin-right: 40px;
   margin-left: 40px;
@@ -20,7 +21,6 @@ const initCounterValues = {
   counterValueUp: 0 ,
   counterValueDown: 0
 };
-
 
 function counterReducer (state, action){
   console.log('counterReducer fired action is: ', action)
@@ -55,6 +55,7 @@ const [ state, dispatch ] = useReducer(counterReducer, initCounterValues)
     if(state.counterValue <= 0 ) return;
     // setCounterValue(counterValue - 1)
     dispatch({type: 'maziau'})
+
   }
 
   // useEffect(() => {
@@ -65,9 +66,21 @@ const [ state, dispatch ] = useReducer(counterReducer, initCounterValues)
     <div >
       <h3>Task 4</h3>
         <Icons>
-          <Icon className="fa fa-thumbs-up fa-5x" aria-hidden="true" onClick={handleIncrement}/>
+
+          <Icon className="fa fa-thumbs-up fa-5x"
+                aria-hidden="true"
+                onClick={handleIncrement}
+                // disabled={state.counterValueUp > 1}
+          />
           <h1>{state.counterValueUp}</h1>
-          <Icon className="fa fa-thumbs-down fa-5x" aria-hidden="true" onClick={handleDecrement} />
+
+
+          <Icon className="fa fa-thumbs-down fa-5x"
+                aria-hidden="true"
+                onClick={handleDecrement}
+                // disabled={state.counterValueDown === 0 }
+
+          />
           <h1>{state.counterValueDown}</h1>
         </Icons>
     </div>
