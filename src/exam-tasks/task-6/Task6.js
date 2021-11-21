@@ -1,28 +1,27 @@
 import React, { useState, useEffect } from 'react';
 
-// const dataa = 'https://jsonplaceholder.typicode.com/users';
 
 function Task6() {
 
-    const [data, setData] = useState('')
+    const [data, setData] = useState([]);
+
+    const fetchData = async () => {
+        const res = await fetch('https://jsonplaceholder.typicode.com/users')
+        const result = await res.json();
+        setData(result)
+    }
 
     useEffect(() => {
         fetchData()
     }, [setData])
 
-    const fetchData = async () => {
-        const res = await fetch('https://jsonplaceholder.typicode.com/users')
-        const result = await res.json();
-        setData(result.data)
-    }
-
-  return (
-    <div>
-      <h3>Task 6</h3>
+    return (
         <div>
-            <h2>Table</h2>
-            <table>
-                <thead>
+            <h3>Task 6</h3>
+            <div>
+                <h2>Table</h2>
+                <table>
+                    <thead>
                     <tr>
                         <th>Name</th>
                         <th>Email</th>
@@ -30,34 +29,27 @@ function Task6() {
                         <th>Phone</th>
                         <th>Company</th>
                     </tr>
-                </thead>
-                <tbody>
+                    </thead>
+                    <tbody>
 
-                    {/*{data.map((item) => {*/}
-                    {/*    <tr key={item.id}>{item.name}</tr>*/}
-                    {/*})}*/}
-
-
-
-                </tbody>
-
-
-                    {/*{data.map((item) => {*/}
-                    {/*    return (*/}
-                    {/*        <tr>*/}
-                    {/*            <td key={item.id}>{item.name}</td>*/}
-                    {/*        </tr>*/}
-
-                    {/*    )*/}
-
-                    {/*})}*/}
+                    {data.map(user => (
+                        <tr key={user.id}>
+                            <td>{user.name}</td>
+                            <td>{user.email}</td>
+                            <td>{`${user.address.street}, ${user.address.city}`}</td>
+                            <td>{user.phone}</td>
+                            <td>{user.company.name}</td>
+                        </tr>
+                    ))}
 
 
 
-            </table>
+                    </tbody>
+
+                </table>
+            </div>
         </div>
-    </div>
-  );
+    );
 }
 
 export default Task6;
