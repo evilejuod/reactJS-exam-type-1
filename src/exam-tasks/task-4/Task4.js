@@ -1,6 +1,8 @@
-import React, {useEffect, useReducer} from 'react';
+import React, { useReducer } from 'react';
 import 'font-awesome/css/font-awesome.min.css';
 import styled from "styled-components";
+import down from './assets/thumbs-down.png'
+import up from './assets/thumbs-up.png'
 
 
 const Icons = styled.div`
@@ -11,78 +13,72 @@ display: flex;
   margin-bottom: 60px;
   color: #7f7f7f;
  `;
-const Icon =styled.i`
-  margin-right: 40px;
-  margin-left: 40px;
-  color: #7f7f7f;
+
+const Button = styled.button`
+  height: 70px;
+  width: 100px;
 `;
 
-const initCounterValues = {
-  counterValueUp: 0 ,
-  counterValueDown: 0
+const ACTIONS = {
+  LIKE: 'like',
+  DISLIKE: 'dislike',
+}
+
+const initialState = {
+  likes: 12,
+  dislikes: 2,
+  active: null
 };
 
-function counterReducer (state, action){
-  console.log('counterReducer fired action is: ', action)
+const reducer = (state, action) => {
+  const { likes, dislikes, active } = state;
 
-  switch (action.type){
-    case 'daugiau' :
+  switch (action.type) {
+    case ACTIONS.LIKE:
       return {
         ...state,
-        counterValueUp: state.counterValueUp + 1 };
-    case 'maziau' :
-      if(state.counterValue <= 0) return state
+        likes: state.likes + 1,
+        dislikes: active === "dislike" ? dislikes - 1 : dislikes,
+        active: "like"
+      };
+    case ACTIONS.DISLIKE:
       return {
         ...state,
-        counterValueDown: state.counterValueDown - 1 };
+        likes: active === "like" ? likes - 1 : likes,
+        active: "dislike",
+        dislikes: dislikes + 1
+      };
     default:
-      console.log('type not found')
       return state;
   }
-
-}
+};
 
 function Task4() {
 
-const [ state, dispatch ] = useReducer(counterReducer, initCounterValues)
-
-
-
-  const handleIncrement = () => {
-    dispatch({type: 'daugiau'})
-  }
-  const handleDecrement = () => {
-    if(state.counterValue <= 0 ) return;
-    // setCounterValue(counterValue - 1)
-    dispatch({type: 'maziau'})
-
-  }
-
-  // useEffect(() => {
-
-  // }, [])
+  const [state, dispatch] = useReducer(reducer, initialState);
+  const { likes, dislikes, active } = state;
 
   return (
     <div >
       <h3>Task 4</h3>
-        <Icons>
+      <Icons >
+        <Button
 
-          <Icon className="fa fa-thumbs-up fa-5x"
-                aria-hidden="true"
-                onClick={handleIncrement}
-                // disabled={state.counterValueUp > 1}
-          />
-          <h1>{state.counterValueUp}</h1>
+            onClick={() =>
+                active !== "like" ? dispatch({ type: ACTIONS.LIKE }) : null
+            }
+        >Likes</Button>
+        <p>{likes}</p>
 
+        <Button
+            onClick={() =>
+                active !== "dislike" ? dispatch({ type: ACTIONS.DISLIKE }) : null
+            }
+        >Dislikes</Button>
+        <p>{dislikes}</p>
 
-          <Icon className="fa fa-thumbs-down fa-5x"
-                aria-hidden="true"
-                onClick={handleDecrement}
-                // disabled={state.counterValueDown === 0 }
+      </Icons>
 
-          />
-          <h1>{state.counterValueDown}</h1>
-        </Icons>
     </div>
   );
 }
