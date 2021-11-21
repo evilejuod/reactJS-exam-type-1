@@ -6,8 +6,8 @@ function Task8() {
   return (
     <div>
       <h3>Task 8</h3>
-      {/*<CompA />*/}
-      {/*<CompB />*/}
+      <CompA />
+      <CompB />
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import styled from "styled-components";
 
 const Form = styled.form`
@@ -57,6 +57,14 @@ function Task3() {
     }
 
 
+
+    useEffect(() => {
+        const { name, surname, age } = inputs;
+        if(name.length === 0 ) return setInputs(true)
+
+    }, [])
+
+
   return (
     <div style={{ height: '60vh' }}>
       <h3>Task 3</h3>
@@ -83,7 +91,7 @@ function Task3() {
                     onChange={handleInputs}
                     value={inputs.age}
                 />
-                <Button type='submit'>Pateikti</Button>
+                <Button disabled={false} type='submit'>Pateikti</Button>
                 <Text>{msg}</Text>
             </Form>
 

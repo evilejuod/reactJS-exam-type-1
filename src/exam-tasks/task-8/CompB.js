@@ -3,7 +3,7 @@ import React from 'react';
 function CompB() {
   return (
     <div>
-      <h4>CompB</h4>
+        <h2>CompB</h2>
     </div>
   );
 }
