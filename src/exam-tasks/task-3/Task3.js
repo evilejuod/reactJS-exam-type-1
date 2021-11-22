@@ -52,6 +52,7 @@ function Task3() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const { age } = inputs;
+        if (age === '' ) return setInputs(true)
         if(age >= 18 ){
             setMsg('Dėkojame, kad užsiregistravote')
         }
@@ -59,12 +60,6 @@ function Task3() {
             setMsg('Dėja, registracija negalima. Registruotis galima tik nuo 18 metų')
         }
     }
-
-    useEffect(() => {
-        const { age } = inputs;
-        if (age === '') return setInputs(true)
-
-    }, [])
 
   return (
     <div >
@@ -95,6 +90,7 @@ function Task3() {
                 />
 
                 <Button disabled={false} type='submit'>Pateikti</Button>
+
                 <Text>{msg}</Text>
             </Form>
 
