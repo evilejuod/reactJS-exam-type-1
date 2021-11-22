@@ -55,10 +55,16 @@ function Task3() {
         if (age === '' ) return setInputs(true)
         if(age >= 18 ){
             setMsg('Dėkojame, kad užsiregistravote')
+            setInputs({
+                name: '',
+                surname: '',
+                age: '',
+            })
         }
         if(age <= 17 ){
             setMsg('Dėja, registracija negalima. Registruotis galima tik nuo 18 metų')
         }
+
     }
 
   return (
