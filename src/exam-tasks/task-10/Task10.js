@@ -8,5 +8,7 @@ Because it didn’t get the context.
 
 Jūsų paaiškinimas:
 
+Context nepasidalino jokiais duomenimis su komponentu, del to nebuvo atvaizduoti duomenys/suprastas anekdotas.
 
+Su Context galima lengviau bendrinti duomenis su keliais ar daugiau komponentu nei perduodant duomenis su props.
 */
