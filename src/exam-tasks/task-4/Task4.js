@@ -2,7 +2,6 @@ import React, { useReducer} from 'react';
 import 'font-awesome/css/font-awesome.min.css';
 import styled from "styled-components";
 
-
 const Icons = styled.div`
 display: flex;
   flex-direction: row;
@@ -11,10 +10,18 @@ display: flex;
   margin-bottom: 60px;
   color: #7f7f7f;
  `;
-const Icon =styled.i`
+
+const IconUp =styled.i`
   margin-right: 40px;
   margin-left: 40px;
   color: #7f7f7f;
+`;
+
+const IconDown =styled.i`
+  margin-right: 40px;
+  margin-left: 40px;
+  color: #7f7f7f;
+  transform: scaleX(-1);
 `;
 
 const initCounterValues = {
@@ -67,7 +74,7 @@ function Task4() {
         <h3>Task 4</h3>
         <Icons>
 
-          <Icon className="fa fa-thumbs-up fa-5x"
+          <IconUp className="fa fa-thumbs-up fa-5x"
                 aria-hidden="true"
                 onClick={handleIncrement}
                 disabled
@@ -75,7 +82,7 @@ function Task4() {
           <h1>{state.counterValueUp}</h1>
 
 
-          <Icon className="fa fa-thumbs-down fa-5x"
+          <IconDown className="fa fa-thumbs-down fa-5x"
                 aria-hidden="true"
                 onClick={handleDecrement}
           />

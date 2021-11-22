@@ -1,16 +1,14 @@
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
 
-const Div = styled.div`
+const Main = styled.main`
 display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 60vh;
+  margin-bottom: 110px;
 `;
-const Title = styled.h1`
-font-size: 30px;
-`;
+
 const Button = styled.button`
   font-size: 15px;
   background-color: #051e28;
@@ -19,7 +17,7 @@ const Button = styled.button`
   height: 35px;
   width: 100px;
   :hover{
-    background-color: #6dc26a;
+    background-color: #1DA1F2;
   }
 `;
 
@@ -31,10 +29,10 @@ function AboutUs(){
     }
 
     return(
-        <Div>
-            <Title>About Us</Title>
+        <Main>
+            <h1>About Us</h1>
             <Button type="button" onClick={goBack}>Grįžti atgal</Button>
-        </Div>
+        </Main>
     )
 }
 

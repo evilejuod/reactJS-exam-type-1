@@ -1,35 +1,27 @@
 import React, { Component } from 'react';
 import styled from "styled-components";
 
-const todos = 'https://jsonplaceholder.typicode.com/todos'
+const Text = styled.li`
+  font-style: italic ;
+  text-align: left;
+  
+`;
+const CardCont = styled.ul`
+  width: 525px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+`;
 
 export default class Card extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-        todos: []
-    };
-  }
-  componentDidMount(){
-    fetch('https://jsonplaceholder.typicode.com/todos')
-        .then((res) => res.json())
-        .then(todoList => {
-          this.setState({ todos: todoList });
-        });
-  }
-
-  render() {
-    return (
-        <div>
-          {this.state.todos.map((item) => (
-              <div key={item.id}>
-                <h3>{item.title}</h3>
-                <h4>{item.completed}</h4>
-              </div>
-          ))}
-
-        </div>
-    )
-
-  }
+    render() {
+        const { title, completed } = this.props.todo;
+        console.log(this.props.todo)
+        return (
+            <CardCont>
+                 <Text>{title} {completed ? "(atlikta)" : "(neatlikta)"}</Text>
+            </CardCont>
+        )
+    }
 }

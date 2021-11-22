@@ -1,23 +1,19 @@
 import React from 'react';
-import AboutUs from "./Pages/About Us";
+import AboutUs from "./Pages/AboutUs";
 import Contacts from "./Pages/Contacts";
 import styled from "styled-components";
 import { Switch, Route } from 'react-router-dom';
-import { Link, NavLink } from 'react-router-dom';
-
+import { Link } from 'react-router-dom';
 
 const Navbar = styled.nav`
-display: flex;
+  display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   color: black;
   text-decoration: none;
-  height: 10vh;
-  margin-bottom: 80px;
-  
+  margin-bottom: 70px;
 `;
-
 
 function Task1() {
   return (

@@ -1,19 +1,20 @@
-import React, {useContext, useEffect, useState} from 'react';
+import React, { useContext } from 'react';
+import { ContextCounter } from "./Task8";
+import { Btn } from './CompA1'
 
-function CompB(props) {
+function CompB() {
 
-    const [ msg, setMsg ] = useState('')
+    const { counter, setCounter } = useContext(ContextCounter);
 
-    const handleMsg = () => {
-        if(props.counter >= 100) return setMsg('Didinti nebegalima')
+    const onDecrement = () => {
+        setCounter(counter - 10);
     }
-
     return (
-    <div>
-        <h2>CompB</h2>
-        <p >{msg}</p>
-    </div>
-  );
+        <div>
+            <h2>CompB</h2>
+            <Btn disabled={counter <= 0} onClick={onDecrement}>Mažinti</Btn>
+        </div>
+    );
 }
 
 export default CompB;

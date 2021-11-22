@@ -2,13 +2,15 @@ import React, {useState, useEffect} from 'react';
 import styled from "styled-components";
 
 const Form = styled.form`
-display: flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 70px;
+  margin-top: 30px;
+  margin-bottom: 30px;
 `;
+
 const Input = styled.input`
-width: 300px;
+  width: 300px;
   height: 30px;
   padding: 0 10px;
   margin-bottom: 10px;
@@ -22,12 +24,12 @@ const Button = styled.button`
   width: 325px;
   border-radius: 3px;
    :hover{
-    background-color: #6dc26a;
+    background-color: #1DA1F2;
   }
 `;
+
 const Text = styled.p`
-margin-top: 10px;
-  
+  margin-top: 10px;
 `;
 
 function Task3() {
@@ -37,6 +39,7 @@ function Task3() {
         surname: '',
         age: '',
     })
+
     const [msg, setMsg] = useState('')
 
     const handleInputs = (e) => {
@@ -45,9 +48,10 @@ function Task3() {
             [e.target.name]: e.target.value,
         });
     };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const { name, surname, age } = inputs;
+        const { age } = inputs;
         if(age >= 18 ){
             setMsg('Dėkojame, kad užsiregistravote')
         }
@@ -56,17 +60,14 @@ function Task3() {
         }
     }
 
-
-
     useEffect(() => {
-        const { name, surname, age } = inputs;
-        if(name.length === 0 ) return setInputs(true)
+        const { age } = inputs;
+        if (age === '') return setInputs(true)
 
     }, [])
 
-
   return (
-    <div style={{ height: '60vh' }}>
+    <div >
       <h3>Task 3</h3>
             <Form onSubmit={handleSubmit}>
                 <Input
@@ -75,8 +76,8 @@ function Task3() {
                     name='name'
                     onChange={handleInputs}
                     value={inputs.name}
-
                 />
+
                 <Input
                     type='text'
                     placeholder='Pavardė'
@@ -84,6 +85,7 @@ function Task3() {
                     onChange={handleInputs}
                     value={inputs.surname}
                 />
+
                 <Input
                     type='number'
                     placeholder='Amžius'
@@ -91,6 +93,7 @@ function Task3() {
                     onChange={handleInputs}
                     value={inputs.age}
                 />
+
                 <Button disabled={false} type='submit'>Pateikti</Button>
                 <Text>{msg}</Text>
             </Form>

@@ -3,32 +3,32 @@ import CompA from './CompA';
 import CompB from './CompB';
 import styled from "styled-components";
 
-const Main = styled.main`
-    display: flex;
+const Main = styled.div`
+  display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+margin-bottom: 40px;
 `;
 
-export const contextCounter = createContext();
-
+export const ContextCounter = createContext();
 
 function Task8() {
 
-    const [  counter, setCounter ] = useState(0)
+    const [counter, setCounter] = useState(0)
 
-  return (
-    <contextCounter.Provider value={{ counter, setCounter }}>
-      <h3>Task 8</h3>
-        <Main>
-            <h4>{counter}</h4>
+    return (
+        <ContextCounter.Provider value={{ counter, setCounter }}>
+            <h3>Task 8</h3>
+            <Main>
+                <h1>{counter}</h1>
+                <CompA />
+                <CompB />
+                <p>{counter === 100 && 'Didinti nebegalima'}</p>
+            </Main>
 
-            <CompA />
-            <CompB />
-
-        </Main>
-
-    </contextCounter.Provider>
-  );
+        </ContextCounter.Provider>
+    );
 }
 
 export default Task8;

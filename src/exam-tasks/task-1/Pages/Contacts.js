@@ -1,16 +1,14 @@
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
 
-const Div = styled.div`
+const Main = styled.main`
 display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 60vh;
+  margin-bottom: 110px;
 `;
-const Title = styled.h1`
-font-size: 30px;
-`;
+
 const Button = styled.button`
   font-size: 15px;
   background-color: #051e28;
@@ -19,7 +17,7 @@ const Button = styled.button`
   height: 35px;
   width: 100px;
   :hover{
-    background-color: #00ac96;
+    background-color: #1DA1F2;
   }
 `;
 
@@ -31,10 +29,10 @@ function Contacts(){
     }
 
     return(
-        <Div>
-            <Title>Contacts</Title>
+        <Main>
+            <h1>Contacts</h1>
             <Button type="button" onClick={goBack}>Grįžti atgal</Button>
-        </Div>
+        </Main>
     )
 }
 

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-
+import css from './Task6.module.css'
 
 function Task6() {
 
@@ -18,17 +18,18 @@ function Task6() {
     return (
         <div>
             <h3>Task 6</h3>
-            <div>
-                <h2>Table</h2>
-                <table>
+            <div className={css.container}>
+                <h1>Table</h1>
+                <table className={css.table}>
+
                     <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Address</th>
-                        <th>Phone</th>
-                        <th>Company</th>
-                    </tr>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Address</th>
+                            <th>Phone</th>
+                            <th>Company</th>
+                        </tr>
                     </thead>
                     <tbody>
 
@@ -41,8 +42,6 @@ function Task6() {
                             <td>{user.company.name}</td>
                         </tr>
                     ))}
-
-
 
                     </tbody>
 

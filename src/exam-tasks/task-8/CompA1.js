@@ -1,38 +1,30 @@
 import React, { useContext } from 'react';
-import { contextCounter } from "./Task8";
+import { ContextCounter } from "./Task8";
 import styled from "styled-components";
 
-const Button = styled.button`
-  width: 250px;
-  height: 35px;
+export const Btn = styled.button`
+  width: 150px;
+  height: 30px;
+  background-color: rgba(183, 183, 183, 0.48);
+  border: none;
   border-radius: 3px;
-  border: 1px solid grey;
-  margin: 0 5px;
-  :hover {
-    background-color: whitesmoke;
-    border: 2px solid #2d2d2d;
-  }
+  font-weight: 700;
 `;
 
 function CompA1() {
-    const { counter, setCounter } = useContext(contextCounter);
+    const { counter, setCounter } = useContext(ContextCounter);
 
     const onIncrement = () => {
         setCounter(counter + 10);
     }
-    const onDecrement = () => {
-        setCounter(counter - 10);
-    }
 
-  return (
-    <div>
-        <h3>CompA1</h3>
+    return (
+        <div>
+            <h3>CompA1</h3>
+            <Btn disabled={counter >= 100} onClick={onIncrement}>Didinti</Btn>
 
-        <Button disabled={counter >= 100} onClick={onIncrement}>Increase</Button>
-        <Button disabled={counter <= 0} onClick={onDecrement}>Decrease</Button>
-
-    </div>
-  );
+        </div>
+    );
 }
 
 export default CompA1;
